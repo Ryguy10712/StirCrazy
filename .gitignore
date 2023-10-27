@@ -1,0 +1,13 @@
+Staging
+.idea
+.git
+.vs
+Binaries
+Build
+Intermediate
+Saved
+Platforms
+DerivedDataCache
+./.vsconfig
+./StirCrazy.sln.DotSettings.user
+Content
