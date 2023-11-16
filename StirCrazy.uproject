@@ -1,13 +1,16 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{BCFEA294-47DC-A004-9F88-D6A70B9D1138}",
+	"EngineAssociation": "{2F38C545-468C-7579-A95E-1CAEE5F92699}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
 			"Name": "StirCrazy",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [

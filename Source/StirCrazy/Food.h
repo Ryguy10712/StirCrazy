@@ -4,11 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "GrabableActor.h"
-#include "Seasoning.h"
 #include "Food.generated.h"
 
+class AStove;
 class UDA_Recipes;
 class ADish;
+class ASeasoning;
 
 /**
  * Class for non-chopable food. Can be cooked if isCookable is true.
@@ -91,8 +92,8 @@ public:
 	UPROPERTY(BlueprintReadOnly, Replicated)
 	TArray<FSeasoningInfo> Seasonings;
 
-	UFUNCTION()
-	TArray<FSeasoningInfo> AddSeasoning(TSubclassOf<ASeasoning> Type, int Amount);
+	UFUNCTION(Server, Reliable)
+	void AddSeasoning(TSubclassOf<ASeasoning> Type, int Amount, ASeasoning* Shaker);
 
 	UPROPERTY(EditAnywhere, Category = PlateProperties)
 	FVector PlatedOffset;

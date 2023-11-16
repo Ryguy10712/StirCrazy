@@ -54,7 +54,7 @@ void AItemSpawner::BeginPlay()
 	if(HasAuthority() && bAutoSpawn)
 	{
 		FTimerDelegate SpawnDelegate;
-		SpawnDelegate.BindLambda([=]()
+		SpawnDelegate.BindLambda([this]()
 		{
 			SpawnItem(nullptr, false);
 		});

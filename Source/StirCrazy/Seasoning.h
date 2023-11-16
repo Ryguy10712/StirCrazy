@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Food.h"
 #include "GrabableActor.h"
 #include "Seasoning.generated.h"
 
@@ -35,6 +36,12 @@ protected:
 
 	UFUNCTION()
 	void Shake();
+
+	UFUNCTION(Server, Reliable)
+	void StartAddSeasoning(AFood* Food);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void ValidateShake();
 
 	bool bShakeLock;
 	

@@ -14,9 +14,9 @@ public class StirCrazy : ModuleRules
 
 		//Include Win64 Discord SDK 
         if (Target.Platform != UnrealTargetPlatform.Win64 || Target.Platform == UnrealTargetPlatform.Android) return;
-        PublicIncludePaths.Add("U:\\StirCrazy\\Source\\StirCrazy\\Discord");
+        PublicIncludePaths.Add("U:\\StirCrazy 5.3\\Source\\StirCrazy\\Discord");
         
-        PublicAdditionalLibraries.Add("E:\\StirCrazy\\Binaries\\Win64\\discord_game_sdk.dll.lib");
+        PublicAdditionalLibraries.Add("U:\\StirCrazy 5.3\\Binaries\\Win64\\discord_game_sdk.dll.lib");
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });

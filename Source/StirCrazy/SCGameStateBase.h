@@ -19,9 +19,9 @@ class STIRCRAZY_API ASCGameStateBase : public AGameStateBase
 {
 	GENERATED_BODY()
 
-	ASCGameStateBase();
 
 public:
+	ASCGameStateBase();
 	
 	UPROPERTY(BlueprintReadWrite, Replicated)
 	int Team0Score;

@@ -11,13 +11,23 @@ AStirCrazyGameModeBase::AStirCrazyGameModeBase()
 	bReplicates = true;
 }
 
+void AStirCrazyGameModeBase::AddOrder(FOrderData Order)
+{
+	;
+}
+
 void AStirCrazyGameModeBase::BeginPlay()
 {
 	Super::BeginPlay();
+	StartGame();
+}
+
+void AStirCrazyGameModeBase::StartGame()
+{
 	GetGameState<ASCGameStateBase>()->StartRoundTimer(this);
 }
 
-void AStirCrazyGameModeBase::DeliverFood_Implementation(ADish* Dish, AVrPawn* Player)
+void AStirCrazyGameModeBase::FulfillOrder_Implementation(int OrderIndex, ADish* Dish, AVrPawn* Player)
 {
 	int DeliveryPoints = 0;
 	//Determine points from this delivery

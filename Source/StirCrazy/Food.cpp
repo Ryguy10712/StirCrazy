@@ -4,6 +4,7 @@
 #include "Food.h"
 #include "Stove.h"
 #include "Dish.h"
+#include "Seasoning.h"
 #include "DA_Recipes.h"
 
 AFood::AFood()
@@ -95,10 +96,10 @@ void AFood::ServerRequestStartCooking_Implementation(AStove* Cooker)
 
 #pragma region Getters & Setters
 
-TArray<FSeasoningInfo> AFood::AddSeasoning(TSubclassOf<ASeasoning> Type, int Amount)
+void AFood::AddSeasoning_Implementation(TSubclassOf<ASeasoning> Type, int Amount, ASeasoning* Shaker)
 {
-	FSeasoningInfo* Seasoning = Seasonings.FindByPredicate([Type](const FSeasoningInfo Seasoning) {
-		return Seasoning.SeasoningType == Type;
+	FSeasoningInfo* Seasoning = Seasonings.FindByPredicate([Type](const FSeasoningInfo S) {
+		return S.SeasoningType == Type;
 	});
 	
 	if (Seasoning)
@@ -109,8 +110,12 @@ TArray<FSeasoningInfo> AFood::AddSeasoning(TSubclassOf<ASeasoning> Type, int Amo
 	{
 		Seasonings.Add({Type, Amount});
 	}
-	
-	return Seasonings;
+
+	if(Shaker)
+	{
+		if(!CurrentHolder) SetOwner(nullptr);
+		Shaker->ValidateShake_Implementation();
+	}
 }
 
 #pragma endregion

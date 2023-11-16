@@ -2,8 +2,6 @@
 
 
 #include "Seasoning.h"
-
-#include "Food.h"
 #include "VrPawn.h"
 
 ASeasoning::ASeasoning()
@@ -48,9 +46,23 @@ void ASeasoning::Shake()
 
 	if(AFood* Food = Cast<AFood>(HitResult.GetActor()))
 	{
-		Food->AddSeasoning(this->GetClass(), 1);
+		if(Food->CurrentHolder != CurrentHolder) return;
+		StartAddSeasoning(Food);
 	}
 	
 }
+
+void ASeasoning::StartAddSeasoning_Implementation(AFood* Food)
+{
+	if(Food->CurrentHolder != CurrentHolder) return;
+	Food->SetOwner(CurrentHolder);
+	Food->AddSeasoning(this->GetClass(), 1, this);
+}
+
+void ASeasoning::ValidateShake_Implementation()
+{
+	//TODO - play shake sound and particle to show that seasoning has been dispensed on server
+}
+
 
 
