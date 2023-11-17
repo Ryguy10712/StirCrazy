@@ -37,6 +37,7 @@ public:
 	UPROPERTY(EditAnywhere)
 	float SpawnInterval;
 
+	//Zero means infinite
 	UPROPERTY(EditAnywhere)
 	int MaxSpawns;
 

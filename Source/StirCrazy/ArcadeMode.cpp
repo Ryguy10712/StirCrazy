@@ -42,7 +42,7 @@ void AArcadeMode::BeginPlay()
 {
 	//Super::BeginPlay();
 	OrderSequence = OrderSequenceAsset->Orders;
-	GetWorldTimerManager().SetTimer(InitialDelayHandle, this, &AArcadeMode::CheckAllPlayersConnected, 10.f, false);
+	GetWorldTimerManager().SetTimer(InitialDelayHandle, this, &AArcadeMode::CheckAllPlayersConnected, 5.f, false);
 }
 
 
@@ -56,12 +56,11 @@ void AArcadeMode::StartGame()
 
 void AArcadeMode::HandleOrderSequence()
 {
-	TArray<FOrderData> Orders = GetGameState<AArcadeGameState>()->Orders;
+	const TArray<FOrderData> Orders = GetGameState<AArcadeGameState>()->Orders;
 
-	//make sure the index isnt overstepping the sequence
+	//make sure the index isn't overstepping the sequence
 	if(CurrentSequenceIndex > OrderSequence.Num() - 1)
 	{
-		//TODO figure out why order is not ordering the right amount of times
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Sequence over"));
 		return;
 	}
@@ -75,7 +74,7 @@ void AArcadeMode::HandleOrderSequence()
 		return;
 	}
 
-	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Order added"));
+	GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Red, TEXT("Order added"));
 	AddOrder(OrderSequence[CurrentSequenceIndex]);
 	GetWorldTimerManager().SetTimer(OrderSequenceHandle, this, &AArcadeMode::HandleOrderSequence, OrderSequence[CurrentSequenceIndex].TimeUntilNextOrder, false);
 	CurrentSequenceIndex++;
