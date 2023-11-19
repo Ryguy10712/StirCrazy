@@ -8,8 +8,15 @@ public class StirCrazyTarget : TargetRules
 	public StirCrazyTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
-		DefaultBuildSettings = BuildSettingsVersion.V2;
+		DefaultBuildSettings = BuildSettingsVersion.V4;
 
 		ExtraModuleNames.AddRange( new string[] { "StirCrazy" } );
+		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_3;
+		
+		bLegacyParentIncludePaths = false;
+		CppStandard = CppStandardVersion.Default;
+		WindowsPlatform.bStrictConformanceMode = true;
+
+
 	}
 }

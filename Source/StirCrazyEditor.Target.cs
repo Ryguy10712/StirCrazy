@@ -16,5 +16,6 @@ public class StirCrazyEditorTarget : TargetRules
 		bLegacyParentIncludePaths = false;
 		CppStandard = CppStandardVersion.Default;
 		WindowsPlatform.bStrictConformanceMode = true;
+        
 	}
 }

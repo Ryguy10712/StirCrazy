@@ -39,6 +39,10 @@
 				"Android",
 				"HoloLens"
 			]
+		},
+		{
+			"Name": "NiagaraFluids",
+			"Enabled": true
 		}
 	]
 }
